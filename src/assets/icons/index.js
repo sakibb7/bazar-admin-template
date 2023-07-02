@@ -13,7 +13,7 @@ import {AiOutlineFullscreen} from "react-icons/ai"
 import {AiOutlineFullscreenExit} from "react-icons/ai"
 import {GoSearch} from "react-icons/go"
 import {BsBookmark} from "react-icons/bs"
-import {GrNotification} from "react-icons/gr"
+import {AiOutlineNotification} from "react-icons/ai"
 import {CgProfile} from "react-icons/cg"
 import {GoSignOut} from "react-icons/go"
 
@@ -28,6 +28,11 @@ import {AiOutlineShoppingCart} from "react-icons/ai"
 import {AiOutlineCloud} from "react-icons/ai"
 import {BiHelpCircle} from "react-icons/bi"
 import {HiOutlineCalculator} from "react-icons/hi"
+
+//project page icon
+import {MdOutlineKeyboardArrowRight} from "react-icons/md"
+import {BiSolidTimeFive} from "react-icons/bi"
+import {IoLocationSharp} from "react-icons/io5"
 
 
 
@@ -44,7 +49,7 @@ export {
     AiOutlineFullscreenExit,
     GoSearch,
     BsBookmark,
-    GrNotification,
+    AiOutlineNotification,
     CgProfile,
     GoSignOut,
     BiTask,
@@ -57,4 +62,7 @@ export {
     AiOutlineCloud,
     BiHelpCircle,
     HiOutlineCalculator,
+    MdOutlineKeyboardArrowRight,
+    BiSolidTimeFive,
+    IoLocationSharp,
 }
