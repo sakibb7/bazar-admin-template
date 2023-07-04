@@ -10,11 +10,13 @@ export const leftSideNav = [
         id: 1,
         name: "Project",
         icon: <BiTask />,
+        link: "/dashboard",
       },
       {
         id: 2,
         name: "Analytics",
         icon: <IoAnalytics />,
+        link: "/analytics",
       },
       {
         id: 3,
