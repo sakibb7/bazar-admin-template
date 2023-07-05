@@ -7,9 +7,11 @@ const LeftNavbar = ({ setCollapse }) => {
   return (
     <div className="bg-slate-800 text-slate-50 flex flex-col gap-12 sticky top-0 h-full z-20 w-[18em]  overflow-y-scroll h-[100vh]">
       <div className="flex justify-between items-center text-lg p-6">
-        <div className="flex justify-between items-center">
-          <SiMarketo /> <p className="pl-2">Bazar</p>
-        </div>
+        <Link to="/">
+          <div className="flex justify-between items-center">
+            <SiMarketo /> <p className="pl-2">Bazar</p>
+          </div>
+        </Link>
         <div className="cursor-pointer" onClick={() => setCollapse(true)}>
           <RxHamburgerMenu />
         </div>
