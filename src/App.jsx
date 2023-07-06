@@ -5,6 +5,7 @@ import LeftNavbar from "./layers/global/LeftNavbar";
 import TopNavbar from "./layers/global/TopNavbar";
 import Project from "./pages/Project";
 import Analytics from "./pages/Analytics";
+import Calendar from "./pages/Calendar";
 
 function App() {
   const [collapse, setCollapse] = useState(false);
@@ -15,7 +16,7 @@ function App() {
           <div
             className={`${
               collapse ? "hidden" : ""
-            } z-99 h-[100vh]  overflow-y-scroll w-[20em]`}
+            } z-99 h-screen sticky top-0 overflow-y-scroll w-[20em]`}
           >
             <LeftNavbar setCollapse={setCollapse} />
           </div>
@@ -23,11 +24,12 @@ function App() {
             <div className=" sticky top-0 z-30">
               <TopNavbar collapse={collapse} setCollapse={setCollapse} />
             </div>
-            <div className="relative z-10">
+            <div className=" z-10">
               <Routes>
                 <Route path="/" element={<Project />} />
                 <Route path="/dashboard" element={<Project />} />
                 <Route path="/analytics" element={<Analytics />} />
+                <Route path="/calendar" element={<Calendar />} />
               </Routes>
             </div>
           </div>

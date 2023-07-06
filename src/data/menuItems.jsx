@@ -44,6 +44,7 @@ export const leftSideNav = [
         id: 2,
         name: "Calendar",
         icon: <IoAnalytics />,
+        link: "/calendar",
       },
       {
         id: 3,
