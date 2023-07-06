@@ -12,7 +12,11 @@ function App() {
     <div className="bg-slate-100">
       <Router>
         <div className="flex w-screen z-20">
-          <div className={`${collapse ? "hidden" : ""}`}>
+          <div
+            className={`${
+              collapse ? "hidden" : ""
+            } z-99 h-[100vh]  overflow-y-scroll w-[20em]`}
+          >
             <LeftNavbar setCollapse={setCollapse} />
           </div>
           <div className="w-full z-30">

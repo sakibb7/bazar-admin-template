@@ -5,7 +5,7 @@ import { leftSideNav } from "../../data/menuItems";
 
 const LeftNavbar = ({ setCollapse }) => {
   return (
-    <div className="bg-slate-800 text-slate-50 flex flex-col gap-12 sticky top-0 h-full z-20 w-[18em]  overflow-y-scroll h-[100vh]">
+    <div className="bg-slate-800 text-slate-50 flex flex-col gap-12 sticky top-0">
       <div className="flex justify-between items-center text-lg p-6">
         <Link to="/">
           <div className="flex justify-between items-center">
