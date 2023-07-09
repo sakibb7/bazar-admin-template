@@ -20,13 +20,9 @@ export const leftSideNav = [
       },
       {
         id: 3,
-        name: "Finance",
-        icon: <BiMoneyWithdraw />,
-      },
-      {
-        id: 4,
-        name: "Crypto",
-        icon: <BiMoneyWithdraw />,
+        name: "Calendar",
+        icon: <IoAnalytics />,
+        link: "/calendar",
       },
     ],
   },
@@ -40,12 +36,7 @@ export const leftSideNav = [
         name: "Academy",
         icon: <BiTask />,
       },
-      {
-        id: 2,
-        name: "Calendar",
-        icon: <IoAnalytics />,
-        link: "/calendar",
-      },
+
       {
         id: 3,
         name: "Chat",

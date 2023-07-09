@@ -6,6 +6,7 @@ import TopNavbar from "./layers/global/TopNavbar";
 import Project from "./pages/Project";
 import Analytics from "./pages/Analytics";
 import Calendar from "./pages/Calendar";
+import Products from "./pages/Products";
 
 function App() {
   const [collapse, setCollapse] = useState(false);
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/dashboard" element={<Project />} />
                 <Route path="/analytics" element={<Analytics />} />
                 <Route path="/calendar" element={<Calendar />} />
+                <Route path="/products" element={<Products />} />
               </Routes>
             </div>
           </div>
