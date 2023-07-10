@@ -33,8 +33,9 @@ export const leftSideNav = [
     menuItems: [
       {
         id: 1,
-        name: "Academy",
+        name: "Products",
         icon: <BiTask />,
+        link: "/products",
       },
 
       {
