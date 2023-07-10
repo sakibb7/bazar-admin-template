@@ -51,7 +51,7 @@ const Products = () => {
   };
 
   const prePage = () => {
-    if (currentPage !== firstIndex - 1) {
+    if (currentPage !== 1) {
       setData(records);
       setCurrentPage(currentPage - 1);
     }
