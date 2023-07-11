@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { products } from "../data/productData";
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
+import Modal from "../layers/products/Modal";
 
 const Products = () => {
   //pagination
@@ -8,12 +9,10 @@ const Products = () => {
   const recordsPerPage = 10;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const records = products.slice(firstIndex, lastIndex);
 
+  const records = products.slice(firstIndex, lastIndex);
   const nPage = Math.ceil(products.length / recordsPerPage);
   const numbers = [...Array(nPage + 1).keys()].slice(1);
-
-  console.log(nPage);
 
   // Product sorting
   const [data, setData] = useState(records);
@@ -22,14 +21,14 @@ const Products = () => {
 
   const sorting = (col) => {
     if (order === "ASC") {
-      const sorted = [...data].sort((a, b) =>
+      const sorted = [...records].sort((a, b) =>
         a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
       );
       setData(sorted);
       setOrder("DSC");
     }
     if (order === "DSC") {
-      const sorted = [...data].sort((a, b) =>
+      const sorted = [...records].sort((a, b) =>
         a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
       );
       setData(sorted);
@@ -39,12 +38,12 @@ const Products = () => {
 
   const sorByNumber = (col) => {
     if (order === "ASC") {
-      const sorted = [...data].sort((a, b) => (a[col] > b[col] ? 1 : -1));
+      const sorted = [...records].sort((a, b) => (a[col] > b[col] ? 1 : -1));
       setData(sorted);
       setOrder("DSC");
     }
     if (order === "DSC") {
-      const sorted = [...data].sort((a, b) => (a[col] < b[col] ? 1 : -1));
+      const sorted = [...records].sort((a, b) => (a[col] < b[col] ? 1 : -1));
       setData(sorted);
       setOrder("ASC");
     }
@@ -52,19 +51,27 @@ const Products = () => {
 
   const prePage = () => {
     if (currentPage !== 1) {
-      setData(records);
       setCurrentPage(currentPage - 1);
+      setData(records);
     }
   };
+
   const nextPage = () => {
     if (currentPage !== nPage) {
-      setData(records);
       setCurrentPage(currentPage + 1);
+      setData(records);
     }
   };
-  const changeCPage = (id) => {
+  const changeCPage = (n) => {
+    setCurrentPage(n);
     setData(records);
-    setCurrentPage(id);
+  };
+
+  //product add, delete
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleDeleteProducts = (id) => {
+    setData(records.filter((idx) => idx.id !== id));
   };
 
   return (
@@ -72,74 +79,96 @@ const Products = () => {
       <div>
         <h1 className="text-3xl text-slate-800 font-[600]">Products</h1>
       </div>
-      <div className="w-full">
-        <input
-          onChange={(e) => setSearch(e.target.value)}
-          type="text"
-          placeholder="Search product"
-          className="input input-bordered w-full max-w-xs my-5 mx-2 float-left"
-        />
+      <div className="w-full flex flex-col gap-4 pt-8">
+        <div className=" flex justify-between items-center">
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            type="text"
+            placeholder="Search product"
+            className="input input-bordered"
+          />
+          <button
+            className="bg-sky-400 px-6 py-2 text-slate-50 font-[500] rounded-xl drop-shadow-2xl"
+            onClick={() => setModalOpen(true)}
+          >
+            Add Product
+          </button>
+          {modalOpen && <Modal closeModal={() => setModalOpen(false)} />}
+        </div>
+
         <div className=" w-full">
-          <table className="table my-8 w-full">
+          <table className="table w-full">
             <thead className="bg-slate-200 text-[16px] text-slate-800 w-full">
-              <tr>
+              <tr className="">
                 <th
                   className="cursor-pointer flex items-center"
                   onClick={() => sorByNumber("id")}
                 >
-                  <p>No</p>
                   {order === "ASC" ? (
-                    <MdOutlineArrowDropDown />
+                    <div className="flex">
+                      No <MdOutlineArrowDropDown />
+                    </div>
                   ) : (
-                    <MdOutlineArrowDropUp />
+                    <div className="flex">
+                      No <MdOutlineArrowDropUp />
+                    </div>
                   )}
                 </th>
 
-                <th
-                  className="cursor-pointer w-[30%]"
-                  onClick={() => sorting("title")}
-                >
-                  Name
+                <th className="cursor-pointer" onClick={() => sorting("title")}>
                   {order === "ASC" ? (
-                    <MdOutlineArrowDropDown />
+                    <div className="flex">
+                      Name <MdOutlineArrowDropDown />
+                    </div>
                   ) : (
-                    <MdOutlineArrowDropUp />
+                    <div className="flex">
+                      Name <MdOutlineArrowDropUp />
+                    </div>
                   )}
                 </th>
                 <th
                   className="cursor-pointer"
                   onClick={() => sorting("category")}
                 >
-                  Category
                   {order === "ASC" ? (
-                    <MdOutlineArrowDropDown />
+                    <div className="flex">
+                      Category <MdOutlineArrowDropDown />
+                    </div>
                   ) : (
-                    <MdOutlineArrowDropUp />
+                    <div className="flex">
+                      Category <MdOutlineArrowDropUp />
+                    </div>
                   )}
                 </th>
                 <th
                   className="cursor-pointer flex items-center"
                   onClick={() => sorByNumber("price")}
                 >
-                  Price
                   {order === "ASC" ? (
-                    <MdOutlineArrowDropDown />
+                    <div className="flex">
+                      Price <MdOutlineArrowDropDown />
+                    </div>
                   ) : (
-                    <MdOutlineArrowDropUp />
+                    <div className="flex">
+                      Price <MdOutlineArrowDropUp />
+                    </div>
                   )}
                 </th>
                 <th
                   className="cursor-pointer"
                   onClick={() => sorByNumber("quantity")}
                 >
-                  Quantity
                   {order === "ASC" ? (
-                    <MdOutlineArrowDropDown />
+                    <div className="flex">
+                      Quantity <MdOutlineArrowDropDown />
+                    </div>
                   ) : (
-                    <MdOutlineArrowDropUp />
+                    <div className="flex">
+                      Quantity <MdOutlineArrowDropUp />
+                    </div>
                   )}
                 </th>
-                <th></th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -157,29 +186,33 @@ const Products = () => {
                     <td>${price}</td>
                     <td>{quantity ? quantity : "Out of stock"}</td>
                     <td>
-                      <button className="pr-4">Edit</button>{" "}
-                      <button>Delete</button>
+                      <button className="bg-green-400 px-4 py-2 text-slate-50 rounded-xl font-bold">
+                        Edit
+                      </button>{" "}
+                      <button
+                        className="bg-red-400 px-4 py-2 text-slate-50 rounded-xl font-bold"
+                        onClick={() => handleDeleteProducts(id)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))}
             </tbody>
           </table>
-          <nav>
-            <ul className="flex gap-4">
-              <li className="cursor-pointer">
-                <a href="#" onClick={() => prePage()}>
-                  Prev
-                </a>
+
+          <nav className="pt-8">
+            <ul className="flex gap-8 justify-start items-center">
+              <li className="bg-sky-400 px-6 py-2 text-slate-50 font-[500]  drop-shadow-2xl cursor-pointer">
+                <a onClick={() => prePage()}>Prev</a>
               </li>
               {numbers.map((n, i) => (
                 <li className="cursor-pointer" key={i}>
                   <a onClick={() => changeCPage(n)}>{n}</a>
                 </li>
               ))}
-              <li className="cursor-pointer">
-                <a href="#" onClick={() => nextPage()}>
-                  Next
-                </a>
+              <li className="bg-sky-400 px-6 py-2 text-slate-50 font-[500] drop-shadow-2xl cursor-pointer">
+                <a onClick={() => nextPage()}>Next</a>
               </li>
             </ul>
           </nav>
