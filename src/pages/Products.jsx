@@ -4,14 +4,15 @@ import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
 import Modal from "../layers/products/Modal";
 
 const Products = () => {
+  const [product, setProduct] = useState(products);
   //pagination
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 10;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
 
-  const records = products.slice(firstIndex, lastIndex);
-  const nPage = Math.ceil(products.length / recordsPerPage);
+  const records = product.slice(firstIndex, lastIndex);
+  const nPage = Math.ceil(product.length / recordsPerPage);
   const numbers = [...Array(nPage + 1).keys()].slice(1);
 
   // Product sorting
@@ -21,14 +22,14 @@ const Products = () => {
 
   const sorting = (col) => {
     if (order === "ASC") {
-      const sorted = [...records].sort((a, b) =>
+      const sorted = [...data].sort((a, b) =>
         a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
       );
       setData(sorted);
       setOrder("DSC");
     }
     if (order === "DSC") {
-      const sorted = [...records].sort((a, b) =>
+      const sorted = [...data].sort((a, b) =>
         a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
       );
       setData(sorted);
@@ -38,26 +39,26 @@ const Products = () => {
 
   const sorByNumber = (col) => {
     if (order === "ASC") {
-      const sorted = [...records].sort((a, b) => (a[col] > b[col] ? 1 : -1));
+      const sorted = [...data].sort((a, b) => (a[col] > b[col] ? 1 : -1));
       setData(sorted);
       setOrder("DSC");
     }
     if (order === "DSC") {
-      const sorted = [...records].sort((a, b) => (a[col] < b[col] ? 1 : -1));
+      const sorted = [...data].sort((a, b) => (a[col] < b[col] ? 1 : -1));
       setData(sorted);
       setOrder("ASC");
     }
   };
 
   const prePage = () => {
-    if (currentPage !== 1) {
+    if (currentPage !== 0) {
       setCurrentPage(currentPage - 1);
       setData(records);
     }
   };
 
   const nextPage = () => {
-    if (currentPage !== nPage) {
+    if (currentPage !== nPage + 1) {
       setCurrentPage(currentPage + 1);
       setData(records);
     }
@@ -72,6 +73,10 @@ const Products = () => {
 
   const handleDeleteProducts = (id) => {
     setData(records.filter((idx) => idx.id !== id));
+  };
+
+  const handleSubmit = (newProducts) => {
+    setProduct([...products, newProducts]);
   };
 
   return (
@@ -93,7 +98,12 @@ const Products = () => {
           >
             Add Product
           </button>
-          {modalOpen && <Modal closeModal={() => setModalOpen(false)} />}
+          {modalOpen && (
+            <Modal
+              closeModal={() => setModalOpen(false)}
+              onSubmit={handleSubmit}
+            />
+          )}
         </div>
 
         <div className=" w-full">
