@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { products } from "../data/productData";
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
 import Modal from "../layers/products/Modal";
@@ -37,6 +37,10 @@ const Products = () => {
     }
   };
 
+  useEffect(() => {
+    setData(records);
+  }, [currentPage]);
+
   const sorByNumber = (col) => {
     if (order === "ASC") {
       const sorted = [...data].sort((a, b) => (a[col] > b[col] ? 1 : -1));
@@ -51,18 +55,21 @@ const Products = () => {
   };
 
   const prePage = () => {
-    if (currentPage !== 0) {
-      setCurrentPage(currentPage - 1);
-      setData(records);
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+      // console.log(currentPage);
+      // setData(records);
     }
   };
 
   const nextPage = () => {
-    if (currentPage !== nPage + 1) {
-      setCurrentPage(currentPage + 1);
-      setData(records);
+    if (currentPage !== nPage) {
+      setCurrentPage((prevPage) => prevPage + 1);
+      // console.log(currentPage);
+      // setData(records);
     }
   };
+
   const changeCPage = (n) => {
     setCurrentPage(n);
     setData(records);
@@ -213,17 +220,21 @@ const Products = () => {
 
           <nav className="pt-8">
             <ul className="flex gap-8 justify-start items-center">
-              <li className="bg-sky-400 px-6 py-2 text-slate-50 font-[500]  drop-shadow-2xl cursor-pointer">
-                <a onClick={() => prePage()}>Prev</a>
-              </li>
+              <a onClick={() => prePage()}>
+                <li className="bg-sky-400 px-6 py-2 text-slate-50 font-[500]  drop-shadow-2xl cursor-pointer">
+                  Prev
+                </li>
+              </a>
               {numbers.map((n, i) => (
                 <li className="cursor-pointer" key={i}>
                   <a onClick={() => changeCPage(n)}>{n}</a>
                 </li>
               ))}
-              <li className="bg-sky-400 px-6 py-2 text-slate-50 font-[500] drop-shadow-2xl cursor-pointer">
-                <a onClick={() => nextPage()}>Next</a>
-              </li>
+              <a onClick={nextPage}>
+                <li className="bg-sky-400 px-6 py-2 text-slate-50 font-[500] drop-shadow-2xl cursor-pointer">
+                  Next
+                </li>
+              </a>
             </ul>
           </nav>
         </div>
