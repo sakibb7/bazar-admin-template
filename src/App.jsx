@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import LeftNavbar from "./layers/global/LeftNavbar";
@@ -7,20 +6,20 @@ import Project from "./pages/Project";
 import Analytics from "./pages/Analytics";
 import Calendar from "./pages/Calendar";
 import Products from "./pages/Products";
+import { useState } from "react";
 
 function App() {
   const [collapse, setCollapse] = useState(false);
   return (
     <div className="bg-slate-100">
       <Router>
-        <div className="flex w-screen z-20">
+        <div className="flex w-full z-20">
           <div
-            className={`${
-              collapse ? "hidden" : ""
-            } z-99 h-screen sticky top-0 overflow-y-scroll w-[20em]`}
+            className={`z-99 h-screen sticky top-0 overflow-y-scroll overflow-x-hidden `}
           >
-            <LeftNavbar setCollapse={setCollapse} />
+            <LeftNavbar collapse={collapse} />
           </div>
+
           <div className="w-full z-30">
             <div className=" sticky top-0 z-30">
               <TopNavbar collapse={collapse} setCollapse={setCollapse} />

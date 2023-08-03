@@ -4,8 +4,8 @@ import { IoSettings } from "react-icons/io5";
 
 const Header = () => {
   return (
-    <div className=" flex justify-between items-center p-12 bg-slate-50 drop-shadow-sm">
-      <div className="flex justify-start items-center gap-6">
+    <div className=" flex max-[768px]:flex-col justify-between items-center p-12 bg-slate-50 drop-shadow-sm">
+      <div className="flex justify-start items-center gap-6 max-[768px]:flex-col">
         <img src={mainUser} alt="" className="w-20 rounded-full" />
         <div>
           <h1 className="text-4xl font-[600] text-slate-900 pb-2">
@@ -17,7 +17,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-8">
+      <div className="flex justify-center items-center gap-8 max-[768px]:pt-4">
         <button className="bg-slate-900 text-slate-50 px-4 py-2 rounded-full flex justify-center items-center gap-2">
           <AiFillMail />
           <p>Messages</p>

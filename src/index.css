@@ -6,4 +6,19 @@
 
 html{
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+     background: #303844; 
+}
+
+::-webkit-scrollbar-thumb{
+    background: #99999966;
+    /* background: linear-gradient(#642bff, #ff22e6); */
+    border-radius: 5px;
 }

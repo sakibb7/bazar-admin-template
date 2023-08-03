@@ -7,8 +7,8 @@ import AudienceCard from "../components/card/AudienceCard";
 const Analytics = () => {
   return (
     <div className="w-full py-10">
-      <div className="flex justify-between items-center px-10">
-        <div className="">
+      <div className="flex justify-between items-center px-10 max-[768px]:flex-col max-[768px]:items-center">
+        <div className="max-[768px]:text-center max-[768px]:pb-4">
           <h1 className="text-2xl text-slate-800 font-[600]">
             Analytics Dashboard
           </h1>
@@ -30,7 +30,7 @@ const Analytics = () => {
       <div className="w-full py-10 px-10">
         <DateTimeChart />
       </div>
-      <div className="grid grid-cols-3 p-4 gap-8">
+      <div className="grid grid-cols-3 p-4 gap-8 xl:grid-cols-4 gap-8 sm:grid-cols-1 md:grid-cols-2">
         <AnalyticsCard />
         <AnalyticsCard />
         <AnalyticsCard />
@@ -40,7 +40,7 @@ const Analytics = () => {
           <h1 className="text-2xl font-[600] text-slate-800">Your Audience</h1>
           <p className="text-slate-700">Demographic properties of your users</p>
         </div>
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid xl:grid-cols-4 gap-8 sm:grid-cols-1 md:grid-cols-2">
           <AudienceCard />
           <AudienceCard />
           <AudienceCard />

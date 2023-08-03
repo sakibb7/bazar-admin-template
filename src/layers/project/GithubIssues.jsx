@@ -3,8 +3,8 @@ import LineChart from "../../components/charts/LineChart";
 
 const GithubIssues = () => {
   return (
-    <div className="bg-slate-50 p-8 my-4 flex justify-center gap-24 rounded-[1rem] drop-shadow-md mx-8 w-[97%]">
-      <div className="w-1/2">
+    <div className="bg-slate-50 p-8 my-4 flex justify-center gap-24 rounded-[1rem] drop-shadow-md mx-8 w-[97%] max-[768px]:flex-col">
+      <div className="w-1/2 max-[768px]:w-full">
         <h2 className="font-[500]">Github Issues Summary</h2>
         <p className="pt-8 text-slate-500 font-[500]">New vs Closed</p>
         <div className="">

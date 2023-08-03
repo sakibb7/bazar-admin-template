@@ -9,8 +9,8 @@ import PolarChart from "../../components/charts/PolarChart";
 
 const TaskSchedule = () => {
   return (
-    <div className="flex gap-4 w-full p-8 drop-shadow-lg">
-      <div className="w-1/2 bg-slate-50 rounded-[1em]">
+    <div className="flex gap-4 w-full p-8 drop-shadow-lg max-[768px]:flex-col">
+      <div className="w-1/2 bg-slate-50 rounded-[1em] max-[768px]:w-full">
         <div className="flex justify-between items-center px-6 py-4">
           <h2 className="font-[500]">Github Issues Summary</h2>
           <div className="flex justify-end items-center gap-4 text-slate-500 font-[600] pb-4">
@@ -38,7 +38,7 @@ const TaskSchedule = () => {
           </div>
         </div>
       </div>
-      <div className="w-1/2 bg-slate-50 rounded-[1em] pb-24">
+      <div className="w-1/2 bg-slate-50 rounded-[1em] pb-24 max-[768px]:w-full">
         <div className="flex justify-between items-center px-6 py-4">
           <h2 className="font-[500]">Schedule</h2>
           <div className="flex justify-end items-center gap-4 text-slate-500 font-[600] pb-4">
