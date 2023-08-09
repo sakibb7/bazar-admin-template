@@ -24,7 +24,7 @@ const TopNavbar = ({ collapse, setCollapse }) => {
           className={` hover:bg-slate-200 p-2 rounded-full`}
           onClick={() => setCollapse(!collapse)}
         >
-          <RxHamburgerMenu />
+          {!collapse && <RxHamburgerMenu />}
         </button>
         <div className="flex gap-2 justify-between text-2xl max-[768px]:hidden">
           <button className="hover:bg-slate-200 p-2 rounded-full">

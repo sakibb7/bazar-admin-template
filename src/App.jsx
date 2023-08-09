@@ -11,20 +11,18 @@ import { useState } from "react";
 function App() {
   const [collapse, setCollapse] = useState(false);
   return (
-    <div className="bg-slate-100">
+    <div className="bg-slate-100 relative">
       <Router>
-        <div className="flex w-full z-20">
-          <div
-            className={`z-99 h-screen sticky top-0 overflow-y-scroll overflow-x-hidden `}
-          >
-            <LeftNavbar collapse={collapse} />
-          </div>
+        <div className="lg:flex max-[1023px]:w-full bg-slate-50">
+          {collapse && (
+            <LeftNavbar collapse={collapse} setCollapse={setCollapse} />
+          )}
 
-          <div className="w-full z-30">
+          <div className="w-full z-30 max-[1023px]:absolute top-0 left-0">
             <div className=" sticky top-0 z-30">
               <TopNavbar collapse={collapse} setCollapse={setCollapse} />
             </div>
-            <div className=" z-10">
+            <div className="">
               <Routes>
                 <Route path="/" element={<Project />} />
                 <Route path="/dashboard" element={<Project />} />
