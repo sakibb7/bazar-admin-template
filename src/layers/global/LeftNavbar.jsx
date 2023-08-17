@@ -7,7 +7,7 @@ import { AiOutlineClose } from "react-icons/ai";
 const LeftNavbar = ({ collapse, setCollapse }) => {
   return (
     <div
-      className={`bg-slate-800 text-slate-50 flex flex-col gap-12 z-50 w-[18rem] sticky top-0 overflow-y-scroll h-screen ${
+      className={`bg-slate-800 text-slate-50 flex flex-col gap-12 z-50 w-[18rem] max-[1023px]:fixed sticky top-0 overflow-y-scroll h-screen ${
         collapse ? "ml-0" : "ml-[-18rem]"
       }`}
     >
